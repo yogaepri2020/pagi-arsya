@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manisnya Pagi</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: sans-serif;
+      margin-top: 50px;
+      background-color: #fef6f0;
+    }
+    h2 {
+      color: #db7093;
+    }
+    video {
+      margin-top: 20px;
+      border-radius: 12px;
+      border: 4px solid #db7093;
+    }
+  </style>
+</head>
+<body>
+  <h2>Yang paling manis hari ini udah keliatan belum?</h2>
+  <video autoplay="true" id="videoElement" width="300" height="400" playsinline></video>
+  <script>
+    const video = document.querySelector("#videoElement");
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+      .then((stream) => {
+        video.srcObject = stream;
+      })
+      .catch((err) => {
+        alert("Kameranya nggak bisa diakses. Coba aktifkan izin kamera ya!");
+      });
+  </script>
+</body>
+</html>
